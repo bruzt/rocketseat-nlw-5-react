@@ -1,6 +1,7 @@
 import React from 'react';
 import format from 'date-fns/format';
 import ptBR from 'date-fns/locale/pt-BR';
+import Link from 'next/link';
 
 import { Container } from './styles';
 
@@ -14,7 +15,11 @@ export default function Header() {
     <Container>
       
       <figure>
-        <img src="logo.svg" alt="Podcastr"/>
+        <Link href='/'>
+          <a>
+            <img src="logo.svg" alt="Podcastr"/>
+          </a>
+        </Link>
       </figure>
 
       <div className="header-date">
