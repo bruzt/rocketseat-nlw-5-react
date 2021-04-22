@@ -14,18 +14,19 @@ export default function Header() {
   return (
     <Container>
       
-      <figure>
-        <Link href='/'>
-          <a>
+      <Link href='/'>
+        <a>
+          <figure>
             <img src="logo.svg" alt="Podcastr"/>
-          </a>
-        </Link>
-      </figure>
+          </figure>
+        </a>
+      </Link>
 
       <div className="header-date">
         <p>O melhor para você ouvir, sempre</p>
         <span>{date}</span>
       </div>
+
     </Container>
   );
 }

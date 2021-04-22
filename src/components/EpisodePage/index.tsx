@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import { usePlayerContext } from '../../contexts/playerContext';
+
 import { IEpisode } from '../../pages';
 
 import { Container } from './styles';
@@ -12,6 +14,7 @@ interface IProps {
 export default function EpisodePage({ episode }: IProps) {
 
   const router = useRouter();
+  const playerContext = usePlayerContext();
 
   return (
     <Container>
@@ -29,6 +32,7 @@ export default function EpisodePage({ episode }: IProps) {
           <button 
             type='button'
             className='play'
+            onClick={() => playerContext.play(episode)}
           >
             <img src="/icons/play.svg" alt="Tocar"/>
           </button>

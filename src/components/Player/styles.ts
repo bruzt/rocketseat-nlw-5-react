@@ -26,21 +26,46 @@ export const Container = styled.div`
         font-weight: 600;
     }
 
-    .empty-player {
+    .player-image {
         width: 100%;
         height: 20rem;
 
-        border: 1.5px dashed var(--purple-300);
         border-radius: 1.5rem;
 
-        background: linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+        &.empty {
+            border: 1.5px dashed var(--purple-300);
+            
+            background: linear-gradient(143.8deg, rgba(145, 100, 250, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
 
-        padding: 4rem;
-        text-align: center;
+            padding: 4rem;
+            text-align: center;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .player-image img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        border-radius: 1.5rem;
+    }
+
+    .player-image {
+        strong, p {
+            display: block;
+            text-align: center;
+
+            margin-top: 1rem;
+        }
+
+        p {
+            opacity: 0.6;
+        }
     }
 
     footer {
@@ -68,17 +93,17 @@ export const Container = styled.div`
         width: 15rem;
         height: 0.3rem;
 
-        margin: 0 0.5rem;
-        background: var(--purple-300);
+        margin: 0 0.6rem;
 
-        border-radius: 2px;
+        display: flex;
+        align-items: center;
     }
 
-    footer .progress .slider div {
-        width: 0;
+    footer .progress .slider .empty-slider {
+        width: 100%;
         height: 100%;
-        background: var(--white);
         border-radius: 2px;
+        background: var(--purple-300);
     }
 
     footer .buttons {
@@ -95,6 +120,16 @@ export const Container = styled.div`
         border: 0;
         background: transparent;
         font-size: 0;
+
+        transition: filter 0.2s;
+
+        &:disabled {
+            cursor: default;
+        }
+
+        &:hover:not(:disabled) {
+            filter: brightness(0.9);
+        }
     }
 
     footer .buttons button.play-button {

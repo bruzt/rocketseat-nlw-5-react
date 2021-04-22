@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { Container, EpisodeCardContainer } from './styles';
 import { IEpisode } from '../../pages/index';
+import { usePlayerContext } from '../../contexts/playerContext';
 
 interface IProps {
   episodes: Array<IEpisode>;
@@ -11,7 +12,7 @@ interface IProps {
 
 export default function HomePage({ episodes }: IProps) {
 
-
+  const playerContext = usePlayerContext();
 
   function lastReleaseCard(episode: IEpisode) {
 
@@ -38,7 +39,10 @@ export default function HomePage({ episodes }: IProps) {
               <p>{episode.publishedAt} ∙ {episode.durationAsString}</p>
             </span>
             
-            <button type='button'>
+            <button 
+              type='button'
+              onClick={() => playerContext.play(episode)}
+            >
               <img src="/icons/play-green.svg" alt="tocar" />
             </button>
           </footer>
@@ -65,12 +69,14 @@ export default function HomePage({ episodes }: IProps) {
 
         <table cellSpacing={0}>
           <thead>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>Podcast</th>
-            <th>Integrantes</th>
-            <th>Data</th>
-            <th>Duração</th>
-            <th></th>
+            <tr>
+              <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+              <th>Podcast</th>
+              <th>Integrantes</th>
+              <th>Data</th>
+              <th>Duração</th>
+              <th></th>
+            </tr>
           </thead>
           <tbody>
             {episodes.slice(2, episodes.length).map((episode) => (
@@ -92,7 +98,10 @@ export default function HomePage({ episodes }: IProps) {
                 <td style={{ width: 100 }}>{episode.publishedAt}</td>
                 <td>{episode.durationAsString}</td>
                 <td>
-                  <button type='button'>
+                  <button 
+                    type='button'
+                    onClick={() => playerContext.play(episode)}
+                  >
                     <img src="icons/play-green.svg" alt="Tocar"/>
                   </button>
                 </td>
