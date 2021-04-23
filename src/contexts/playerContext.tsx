@@ -22,7 +22,9 @@ interface IPlayerContext {
     isLooping: boolean;
     toggleIsLooping: () => void;
     progress: number;
-    handleSliderChange: (change: number) => void;
+    handleSliderChange: (amount: number) => void;
+    volume: number;
+    handleVolumeChange: (amount: number) => void;
 }
 
 const Context = createContext({} as IPlayerContext);
@@ -37,6 +39,7 @@ export function PlayerProvider({ children }: IProps) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isLooping, setIsLooping] = useState(false);
     const [progress, setProgress] = useState(0);
+    const [volume, setVolume] = useState(50);
 
     const currentEpisode = episode || episodes[currentEpisodeIndex];
     const hasPrevious = currentEpisodeIndex > 0;
@@ -46,7 +49,11 @@ export function PlayerProvider({ children }: IProps) {
 
     useEffect(() => {
         if (audioRef.current) {
-            if (isPlaying) audioRef.current.play();
+            if (isPlaying) {
+
+                audioRef.current.volume = volume/100;
+                audioRef.current.play();
+            }
             else audioRef.current.pause();
         }
     }, [isPlaying])
@@ -138,6 +145,12 @@ export function PlayerProvider({ children }: IProps) {
         }, 100);
     }
 
+    function handleVolumeChange(amount: number){
+
+        setVolume(amount);
+        audioRef.current.volume = amount/100;
+    }
+
     return (
         <Context.Provider
             value={{
@@ -156,7 +169,9 @@ export function PlayerProvider({ children }: IProps) {
                 isLooping,
                 toggleIsLooping,
                 progress,
-                handleSliderChange
+                handleSliderChange,
+                volume,
+                handleVolumeChange,
             }}
         >
             {(episode || currentEpisode) && (

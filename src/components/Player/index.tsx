@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { RiVolumeVibrateFill } from 'react-icons/ri';
+import ClickAwayListener from 'react-click-away-listener';
 
 import { usePlayerContext } from '../../contexts/playerContext';
 
@@ -10,9 +12,9 @@ import convertDurationToTimeString from '../../utils/convertDurationToTimeString
 
 export default function Player() {
 
+  const [isVolumeOpen, setIsVolumeOpen] = useState(false);
+
   const playerContext = usePlayerContext();
-
-
 
   return (
     <Container>
@@ -73,6 +75,7 @@ export default function Player() {
         </div>
 
         <div className="buttons">
+          {/*
           <button 
             type='button'
             title='Aleatório'
@@ -81,6 +84,41 @@ export default function Player() {
           >
             <img src="/icons/shuffle.svg" alt="Embaralhar"/>
           </button>
+          */}
+          <div className="volume-container">
+            <button 
+              type='button'
+              title='Volume'
+              disabled={playerContext.currentEpisode == null}
+              onClick={() => setIsVolumeOpen(!isVolumeOpen)}
+            >
+              <RiVolumeVibrateFill size={23} color='#F7F8FA' />
+            </button>
+            {isVolumeOpen && (
+              <ClickAwayListener onClickAway={() => setIsVolumeOpen(false)}>
+                <div className="volume-slider">
+                  <Slider
+                    vertical={true}
+                    max={100}
+                    value={playerContext.volume}
+                    onChange={playerContext.handleVolumeChange}
+
+                    trackStyle={{
+                      backgroundColor: '#04D361',
+                    }}
+                    railStyle={{
+                      backgroundColor: '#8257E5',
+                    }}
+                    handleStyle={{
+                      borderColor: '#04D361',
+                      borderWidth: 4,
+                      cursor: 'grabbing',
+                    }}
+                  />
+                </div>
+              </ClickAwayListener>
+            )}
+          </div>
           <button 
             type='button'
             title='Anterior'

@@ -159,4 +159,28 @@ export const Container = styled.div`
             filter: brightness(0.9);
         }
     }
+
+    footer .buttons .volume-container {
+        position: relative;
+    }
+
+    footer .buttons .volume-container .volume-slider {
+        position: absolute;
+        left: 0;
+        bottom: 2rem;
+
+        width: 100%;
+        height: 10rem;
+
+        padding: 0.8rem 0;
+
+        background: var(--purple-300);
+        border-radius: 1rem;
+        z-index: 10;
+
+        display: flex;
+        justify-content: center;
+
+        cursor: pointer;
+    }
 `;
