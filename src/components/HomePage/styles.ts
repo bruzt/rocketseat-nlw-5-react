@@ -175,4 +175,11 @@ export const Container = styled.div`
             height: 100%;
         }
     }
+
+    @media (max-width: 1771px){
+
+        min-height: 65rem;
+
+        overflow-y: unset;
+    }
 `;

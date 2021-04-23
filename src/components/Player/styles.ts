@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 26.5rem;
-    height: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 50rem;
 
     background: var(--purple-800);
     color: var(--white);
@@ -97,6 +97,8 @@ export const Container = styled.div`
 
         display: flex;
         align-items: center;
+
+        cursor: pointer;
     }
 
     footer .progress .slider .empty-slider {
@@ -121,15 +123,27 @@ export const Container = styled.div`
         background: transparent;
         font-size: 0;
 
-        transition: filter 0.2s;
+        transition: 0.2s;
 
         &:disabled {
             cursor: default;
         }
 
-        &:hover:not(:disabled) {
+        &:hover:not(:disabled):not(.active) {
             filter: brightness(0.9);
         }
+
+        &.active {
+            filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+
+            &:hover {
+                filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+            }
+        }
+    }
+
+    footer:not(.empty) .buttons button:disabled {
+        opacity: 0.5;
     }
 
     footer .buttons button.play-button {
@@ -138,5 +152,11 @@ export const Container = styled.div`
 
         border-radius: 1rem;
         background: var(--purple-300);
+
+        transition: filter 0.2s;
+
+        &.pause {
+            filter: brightness(0.9);
+        }
     }
 `;

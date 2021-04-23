@@ -1,5 +1,6 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import format from 'date-fns/format';
 import ptBR from 'date-fns/locale/pt-BR';
 
@@ -65,5 +66,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export default function Episode({ episode }: IProps){
 
-    return <EpisodePage episode={episode} />;
+    return (
+        <>
+            <Head>
+                <title>Podcastr - {episode.title}</title>
+            </Head>
+        
+            <EpisodePage episode={episode} />
+        </>
+    );
 }

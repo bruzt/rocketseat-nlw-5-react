@@ -8,7 +8,7 @@ import { IEpisode } from '../../pages';
 import { Container } from './styles';
 
 interface IProps {
-  episode: IEpisode
+  episode: IEpisode;
 }
 
 export default function EpisodePage({ episode }: IProps) {
@@ -32,7 +32,7 @@ export default function EpisodePage({ episode }: IProps) {
           <button 
             type='button'
             className='play'
-            onClick={() => playerContext.play(episode)}
+            onClick={() => playerContext.playEpisode(episode)}
           >
             <img src="/icons/play.svg" alt="Tocar"/>
           </button>

@@ -6,10 +6,13 @@ import 'rc-slider/assets/index.css';
 import { usePlayerContext } from '../../contexts/playerContext';
 
 import { Container } from './styles';
+import convertDurationToTimeString from '../../utils/convertDurationToTimeString';
 
 export default function Player() {
 
   const playerContext = usePlayerContext();
+
+
 
   return (
     <Container>
@@ -40,11 +43,15 @@ export default function Player() {
 
       <footer className={playerContext.currentEpisode ? '' : 'empty'}>
         <div className="progress">
-          <span>00:00</span>
+          <span>{convertDurationToTimeString(playerContext.progress)}</span>
           <div className="slider">
             {playerContext.currentEpisode 
               ? (
                 <Slider 
+                  max={playerContext.currentEpisode.duration}
+                  value={playerContext.progress}
+                  onChange={playerContext.handleSliderChange}
+
                   trackStyle={{
                     backgroundColor: '#04D361',
                   }}
@@ -54,6 +61,7 @@ export default function Player() {
                   handleStyle={{
                     borderColor: '#04D361',
                     borderWidth: 4,
+                    cursor: 'grabbing',
                   }}
                 />
               ) : (
@@ -61,20 +69,22 @@ export default function Player() {
               )
             }
           </div>
-          <span>{playerContext.currentEpisode ? playerContext.currentEpisode.durationAsString : '00:00'}</span>
+          <span>{convertDurationToTimeString(playerContext.currentEpisode?.duration ?? 0)}</span>
         </div>
 
         <div className="buttons">
           <button 
             type='button'
-            disabled={playerContext.currentEpisode ? false : true}
+            title='Aleatório'
+            disabled={playerContext.currentEpisode == null}
             onClick={() => playerContext.shuffe()}
           >
             <img src="/icons/shuffle.svg" alt="Embaralhar"/>
           </button>
           <button 
             type='button'
-            disabled={playerContext.currentEpisode ? false : true}
+            title='Anterior'
+            disabled={playerContext.currentEpisode == null || playerContext.hasPrevious == false}
             onClick={() => playerContext.playPrevious()}
           >
             <img src="/icons/play-previous.svg" alt="Tocar anterior"/>
@@ -83,7 +93,8 @@ export default function Player() {
             ? (
               <button 
                 type='button'
-                className='play-button'
+                title='Pausar'
+                className='play-button pause'
                 onClick={() => playerContext.pause()}
               >
                 <img src="/icons/pause.svg" alt="Pausar"/>
@@ -91,8 +102,9 @@ export default function Player() {
             ) : (
               <button 
                 type='button' 
+                title='Tocar'
                 className='play-button'
-                disabled={playerContext.currentEpisode ? false : true}
+                disabled={playerContext.currentEpisode == null}
                 onClick={() => playerContext.resume()}
               >
                 <img src="/icons/play.svg" alt="Tocar"/>
@@ -101,14 +113,18 @@ export default function Player() {
           }
           <button 
             type='button'
-            disabled={playerContext.currentEpisode ? false : true}
+            title='Próximo'
+            disabled={playerContext.currentEpisode == null || playerContext.hasNext == false}
             onClick={() => playerContext.playNext()}
           >
             <img src="/icons/play-next.svg" alt="Tocar próximo"/>
           </button>
           <button 
             type='button'
-            disabled={playerContext.currentEpisode ? false : true}
+            title='Repetir'
+            className={playerContext.isLooping ? 'active' : ''}
+            //disabled={playerContext.currentEpisode == null}
+            onClick={playerContext.toggleIsLooping}
           >
             <img src="/icons/repeat.svg" alt="repetir"/>
           </button>

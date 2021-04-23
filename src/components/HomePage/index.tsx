@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,7 +14,13 @@ export default function HomePage({ episodes }: IProps) {
 
   const playerContext = usePlayerContext();
 
-  function lastReleaseCard(episode: IEpisode) {
+  const lastReleasesNumber = 2;
+
+  useEffect( () => {
+    playerContext.setEpisodes(episodes);
+  }, [episodes]);
+
+  function lastReleaseCard(episode: IEpisode, index: number) {
 
     return (
       <EpisodeCardContainer>
@@ -41,7 +47,7 @@ export default function HomePage({ episodes }: IProps) {
             
             <button 
               type='button'
-              onClick={() => playerContext.play(episode)}
+              onClick={() => playerContext.playList(index)}
             >
               <img src="/icons/play-green.svg" alt="tocar" />
             </button>
@@ -59,8 +65,9 @@ export default function HomePage({ episodes }: IProps) {
         <h2>Ultimos lançametos</h2>
 
         <div className="last-releases">
-          {lastReleaseCard(episodes[0])}
-          {lastReleaseCard(episodes[1])}
+          {episodes.slice(0, lastReleasesNumber).map( (episode, index) => (
+            lastReleaseCard(episode, index)
+          ))}
         </div>
       </section>
 
@@ -70,7 +77,7 @@ export default function HomePage({ episodes }: IProps) {
         <table cellSpacing={0}>
           <thead>
             <tr>
-              <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+              <th style={{ width: 70 }}></th>
               <th>Podcast</th>
               <th>Integrantes</th>
               <th>Data</th>
@@ -79,7 +86,7 @@ export default function HomePage({ episodes }: IProps) {
             </tr>
           </thead>
           <tbody>
-            {episodes.slice(2, episodes.length).map((episode) => (
+            {episodes.slice(lastReleasesNumber, episodes.length).map((episode, index) => (
               <tr key={episode.id}>
                 <td>
                   <Image 
@@ -100,7 +107,7 @@ export default function HomePage({ episodes }: IProps) {
                 <td>
                   <button 
                     type='button'
-                    onClick={() => playerContext.play(episode)}
+                    onClick={() => playerContext.playList(index + lastReleasesNumber)}
                   >
                     <img src="icons/play-green.svg" alt="Tocar"/>
                   </button>

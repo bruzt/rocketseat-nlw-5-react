@@ -26,7 +26,7 @@ export const Container = styled.div`
     }
 
     figure img {
-        width: 41rem;
+        width: 100%;
 
         border-radius: 1rem;
     }
@@ -39,6 +39,8 @@ export const Container = styled.div`
 
         border: 0;
         border-radius: 0.5rem;
+
+        z-index: 10;
 
         &:hover {
             filter: brightness(0.9);
