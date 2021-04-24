@@ -12,6 +12,5 @@ export const Container = styled.div`
 
     @media (max-width: 1771px){
         flex-direction: column;
-        align-items: center;
     }
 `;

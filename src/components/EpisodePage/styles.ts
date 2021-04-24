@@ -12,7 +12,7 @@ export const Container = styled.div`
     overflow-y: scroll;
     
     section {
-        max-width: 40rem;;
+        max-width: 40rem;
         height: fit-content;
 
         display: flex;
@@ -90,5 +90,32 @@ export const Container = styled.div`
     .description {
         text-align: justify;
         line-height: 1.5rem;
+    }
+
+    @media (max-width: 1771px){
+
+        height: fit-content;
+        overflow-y: unset;
+
+        figure {
+            width: 85%;
+
+            margin-left: -1rem;
+        }
+
+        h1 {
+            padding: 1rem 2rem 1rem 1rem;
+        }
+
+        .info {
+            padding: 1rem 2rem 1rem 1rem;
+
+            text-align: center;
+        }
+
+        .description {
+            
+            padding: 0 2rem 0 1rem;
+        }
     }
 `;

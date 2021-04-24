@@ -92,7 +92,7 @@ export default function Player() {
               disabled={playerContext.currentEpisode == null}
               onClick={() => setIsVolumeOpen(!isVolumeOpen)}
             >
-              <RiVolumeVibrateFill size={23} color='#F7F8FA' />
+              <RiVolumeVibrateFill size={23} color='#FFFF' />
             </button>
             {isVolumeOpen && (
               <ClickAwayListener onClickAway={() => setIsVolumeOpen(false)}>

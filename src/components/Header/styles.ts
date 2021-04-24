@@ -30,4 +30,10 @@ export const Container = styled.header`
         margin-left: auto;
         text-transform: capitalize;
     }
+
+    @media (max-width: 1771px){
+        .header-date p {
+            display: none;
+        }
+    }
 `;

@@ -67,4 +67,10 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  @media (max-width: 1771px){
+    body {
+      overflow-x: hidden;
+    }
+  }
 `;

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 26.5rem;
     height: 100vh;
-    min-height: 50rem;
 
     background: var(--purple-800);
     color: var(--white);
@@ -27,7 +26,7 @@ export const Container = styled.div`
     }
 
     .player-image {
-        width: 100%;
+        max-width: 20rem;
         height: 20rem;
 
         border-radius: 1.5rem;
@@ -162,7 +161,9 @@ export const Container = styled.div`
 
     footer .buttons .volume-container {
         position: relative;
-    }
+
+        margin-bottom: -3px;
+    }   
 
     footer .buttons .volume-container .volume-slider {
         position: absolute;
@@ -182,5 +183,15 @@ export const Container = styled.div`
         justify-content: center;
 
         cursor: pointer;
+    }
+
+    @media (max-width: 1771px){
+        width: 100vw;
+        min-height: 50rem;
+
+        .player-image {
+            height: fit-content;
+            min-height: 20rem;
+        }
     }
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const EpisodeCardContainer = styled.div`
-
+        
     display: flex;
 
     background: var(--white);
@@ -25,6 +25,8 @@ export const EpisodeCardContainer = styled.div`
     }
 
     .info {
+        width: 100%;
+        
         margin-left: 1rem;
 
         display: flex;
@@ -39,7 +41,7 @@ export const EpisodeCardContainer = styled.div`
         color: inherit;
 
         line-height: 1.3em;
-        height: 2.6em;
+        height: 2.6rem;
         overflow: hidden;
         text-overflow: ellipsis;
 
@@ -49,6 +51,8 @@ export const EpisodeCardContainer = styled.div`
     }
 
     footer {
+        width: 100%;
+
         position: relative;
     }
 
@@ -84,6 +88,13 @@ export const EpisodeCardContainer = styled.div`
     footer button img {
         width: 100%;
         height: 100%;
+    }
+
+    @media (max-width: 1771px){
+
+        footer p:nth-child(1) {
+            display: none;
+        }
     }
 `; 
 
@@ -177,9 +188,25 @@ export const Container = styled.div`
     }
 
     @media (max-width: 1771px){
-
-        min-height: 65rem;
+        height: fit-content;
 
         overflow-y: unset;
+
+        padding: 1rem 0.5rem;
+
+        .last-releases {
+            grid-template-columns: 1fr;
+        }
+
+        table {
+            th:nth-child(1),
+            th:nth-child(3),
+            th:nth-child(5),
+            td:nth-child(1),
+            td:nth-child(3),
+            td:nth-child(5) {
+                display: none;
+            }
+        }
     }
 `;
