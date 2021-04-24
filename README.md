@@ -9,6 +9,7 @@ Também foi utilizado nesse projeto:
  - date-fns, para manipular datas;
  - rc-slider, componente react para gerar e manipular barras slider;
 
+</br>
 <p align="center">
   <img src="https://github.com/bruzt/rocketseat-nlw-5-react/blob/main/image1.gif?raw=true">
 </p>
