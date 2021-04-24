@@ -9,10 +9,13 @@ Também foi utilizado nesse projeto:
  - date-fns, para manipular datas;
  - rc-slider, componente react para gerar e manipular barras slider;
 
+<p align="center">
+  <img src="https://github.com/bruzt/rocketseat-nlw-5-react/blob/main/image1.gif?raw=true">
+</p>
+
+
 ## Para testar
 
 Para testar essa aplicação execute no terminal o comando ```npm install``` para instalar os pacotes, depois o comando ```npm run server``` para iniciar a API fake que vai servir os dados dos episódios para a aplicação, então execute o comando ```npm run build``` para gerar a build do projeto e por fim o comando ```npm start``` para iniciar o projeto. Para visualizar a home page acesse no navegador de internet o endereço ```http://localhost:3000/```.
 
-<p align="center">
-  <img src="https://github.com/bruzt/rocketseat-nlw-5-react/blob/main/image1.gif?raw=true">
-</p>
+
