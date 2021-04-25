@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 26.5rem;
-    min-height: 100vh;
-    height: 50rem;
+    min-height: 50rem;
+    height: 100vh;
 
     background: var(--purple-800);
     color: var(--white);

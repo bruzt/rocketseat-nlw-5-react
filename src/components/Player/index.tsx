@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { RiVolumeVibrateFill } from 'react-icons/ri';
+import { HiVolumeUp } from 'react-icons/hi';
 import ClickAwayListener from 'react-click-away-listener';
 
 import { usePlayerContext } from '../../contexts/playerContext';
@@ -92,7 +92,7 @@ export default function Player() {
               disabled={playerContext.currentEpisode == null}
               onClick={() => setIsVolumeOpen(!isVolumeOpen)}
             >
-              <RiVolumeVibrateFill size={23} color='#FFFF' />
+              <HiVolumeUp size={23} color='#FFFF' />
             </button>
             {isVolumeOpen && (
               <ClickAwayListener onClickAway={() => setIsVolumeOpen(false)}>

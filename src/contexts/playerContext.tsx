@@ -174,10 +174,10 @@ export function PlayerProvider({ children }: IProps) {
                 handleVolumeChange,
             }}
         >
-            {(episode || currentEpisode) && (
+            {currentEpisode && (
                 <audio
                     ref={audioRef}
-                    src={episode?.url || currentEpisode.url}
+                    src={currentEpisode.url}
                     autoPlay={isPlaying}
                     onPlay={resume}
                     onPause={pause}
