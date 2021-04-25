@@ -90,7 +90,7 @@ export const EpisodeCardContainer = styled.div`
         height: 100%;
     }
 
-    @media (max-width: 1771px){
+    @media (max-width: 550px){
 
         footer p:nth-child(1) {
             display: none;
@@ -100,10 +100,18 @@ export const EpisodeCardContainer = styled.div`
 
 export const Container = styled.div`
     width: 1fr;
+    
     height: calc(100vh - 6.25rem);
+
     overflow-y: scroll;
 
+    
     padding: 4rem;
+
+    .center {
+        max-width: 90rem;
+        margin: 0 auto;
+    }
 
     .last-releases {
         display: grid;
@@ -193,7 +201,9 @@ export const Container = styled.div`
         overflow-y: unset;
 
         padding: 1rem 0.5rem;
+    }
 
+    @media (max-width: 1220px){
         .last-releases {
             grid-template-columns: 1fr;
         }

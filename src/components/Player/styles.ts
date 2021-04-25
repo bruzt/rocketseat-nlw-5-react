@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 26.5rem;
-    height: 100vh;
+    min-height: 100vh;
+    height: 50rem;
 
     background: var(--purple-800);
     color: var(--white);
@@ -187,7 +188,6 @@ export const Container = styled.div`
 
     @media (max-width: 1771px){
         width: 100vw;
-        min-height: 50rem;
 
         .player-image {
             height: fit-content;

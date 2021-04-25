@@ -31,7 +31,7 @@ export const Container = styled.header`
         text-transform: capitalize;
     }
 
-    @media (max-width: 1771px){
+    @media (max-width: 900px){
         .header-date p {
             display: none;
         }

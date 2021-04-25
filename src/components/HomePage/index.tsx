@@ -61,63 +61,66 @@ export default function HomePage({ episodes }: IProps) {
   return (
     <Container>
 
-      <section>
-        <h2>Ultimos lançametos</h2>
+      <div className="center">
 
-        <div className="last-releases">
-          {episodes.slice(0, lastReleasesNumber).map( (episode, index) => (
-            lastReleaseCard(episode, index)
-          ))}
-        </div>
-      </section>
+        <section>
+          <h2>Ultimos lançametos</h2>
 
-      <section>
-        <h2 className='all-episodes'>Todos os episódios</h2>
-
-        <table cellSpacing={0}>
-          <thead>
-            <tr>
-              <th style={{ width: 70 }}></th>
-              <th>Podcast</th>
-              <th>Integrantes</th>
-              <th>Data</th>
-              <th>Duração</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {episodes.slice(lastReleasesNumber, episodes.length).map((episode, index) => (
-              <tr key={episode.id}>
-                <td>
-                  <Image 
-                    width={120}
-                    height={120}
-                    src={episode.thumbnail} 
-                    alt={episode.description} 
-                  />
-                </td>
-                <td>
-                  <Link href={`/episode/${episode.id}`}>
-                    <a>{episode.title}</a>
-                  </Link>
-                </td>
-                <td>{episode.members}</td>
-                <td style={{ width: 100 }}>{episode.publishedAt}</td>
-                <td>{episode.durationAsString}</td>
-                <td>
-                  <button 
-                    type='button'
-                    onClick={() => playerContext.playList(index + lastReleasesNumber)}
-                  >
-                    <img src="icons/play-green.svg" alt="Tocar"/>
-                  </button>
-                </td>
-              </tr>
+          <div className="last-releases">
+            {episodes.slice(0, lastReleasesNumber).map( (episode, index) => (
+              lastReleaseCard(episode, index)
             ))}
-          </tbody>
-        </table>
+          </div>
+        </section>
 
-      </section>
+        <section>
+          <h2 className='all-episodes'>Todos os episódios</h2>
+
+          <table cellSpacing={0}>
+            <thead>
+              <tr>
+                <th style={{ width: 70 }}></th>
+                <th>Podcast</th>
+                <th>Integrantes</th>
+                <th>Data</th>
+                <th>Duração</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {episodes.slice(lastReleasesNumber, episodes.length).map((episode, index) => (
+                <tr key={episode.id}>
+                  <td>
+                    <Image 
+                      width={120}
+                      height={120}
+                      src={episode.thumbnail} 
+                      alt={episode.description} 
+                    />
+                  </td>
+                  <td>
+                    <Link href={`/episode/${episode.id}`}>
+                      <a>{episode.title}</a>
+                    </Link>
+                  </td>
+                  <td>{episode.members}</td>
+                  <td style={{ width: 100 }}>{episode.publishedAt}</td>
+                  <td>{episode.durationAsString}</td>
+                  <td>
+                    <button 
+                      type='button'
+                      onClick={() => playerContext.playList(index + lastReleasesNumber)}
+                    >
+                      <img src="icons/play-green.svg" alt="Tocar"/>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+        </section>
+      </div>
       
     </Container>
   );
