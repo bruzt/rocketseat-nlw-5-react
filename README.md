@@ -1,7 +1,7 @@
 
 # Next Level Week 5 da Rocketseat, trilha ReactJS
 
-Esse projeto foi desenvolvido na NLW #5 da Rocketseat, a proposta foi desenvolver um site para ouvir podcasts utilizado Typescript e ReactJS com o framework Next.js para gerar as páginas estaticas (SSG) da home e dos episodios, além da construção de um player de áudio com HTML, CSS e javascript.
+Esse projeto foi desenvolvido na NLW #5 da Rocketseat, a proposta foi desenvolver um site para ouvir podcasts utilizado Typescript e ReactJS com o framework Next.js para gerar as páginas estáticas (SSG) da home e dos episódios, além da construção de um player de áudio com HTML, CSS e javascript.
 
 Também foi utilizado nesse projeto: 
  - Axios, para fazer requisições HTTP para a API;
